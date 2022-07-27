@@ -1,0 +1,41 @@
+{% extends "layout/app.twig" %}
+
+{% block content %}
+
+<h1>Create Product</h1>
+
+{% if values.formErrors %}
+<div class="alert alert-danger">
+{% for item in values.formErrors %}
+   <p>{{item}}</p>
+{% endfor %}
+</div>
+{% endif %}
+
+
+<form action="{{ path_for('create') }}" method="post" enctype="multipart/form-data">
+
+  <div class="mb-3">
+    <label>Product Image</label> <br>
+    <input type="file" name="image"  >
+  </div>
+
+  <div class="mb-3">
+    <label>Product Title</label>
+    <input type="text" class="form-control" name="title" value={{values.formValues.title}}>
+  </div>
+
+  <div class="mb-3">
+    <label>Product Description</label>
+    <textarea class="form-control" name="description" value={{values.formValues.description}}></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label>Product Price</label>
+    <input type="number" step=".01" name="price" class="form-control" value={{values.formValues.price}}>
+  </div>
+ 
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}

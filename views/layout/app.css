@@ -1,0 +1,15 @@
+body {
+  margin-top: 30px;
+}
+.thumb-image {
+  width: 50px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: white;
+}

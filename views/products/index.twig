@@ -1,0 +1,46 @@
+{% extends "layout/app.twig" %}
+
+
+{% block content %}
+     <h1>Product App</h1>
+
+      <p>
+        <a href=" {{ path_for('create.form') }} " class="btn btn-success">Create Product</a>
+    </p>
+   <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Image</th>
+      <th scope="col">Title</th>
+      <th scope="col">Price</th>
+      <th scope="col">Create Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+{% for product in products %}
+    <tr>
+      <th scope="row">{{product.id}}</th>
+      <td>
+    <img src="../../public/{{product.image}}" alt="" class="thumb-image">
+      </td>  
+      <td> {{product.title }}</td>
+      <td> {{product.price }}</td>
+      <td> {{product.create_date}}</td>
+      <td>
+      <a href="update.php?id=<?php echo $product['id'] ?>" class="btn btn-sm btn-primary">Edit</a>
+      {# <form style="display:inline-block;" method="post" action="delete.php">
+          <input type="hidden" name="id" value="<?php echo $product['id'] ?>">
+      </form> #}
+          <button type="submit" class="btn btn-sm btn-danger"> <a href="http://localhost:8000/public/product/delete/{{product.id}}">Delete</a> </button>
+      </td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+
+
+{% endblock %}
